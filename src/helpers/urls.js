@@ -37,10 +37,10 @@ export const Urls = {
 
   /* AUTH */
   getLoginURL() {
-    return PATHS.AUTH.children.LOGIN.path;
+    return PATHS.AUTH.url + PATHS.AUTH.children.LOGIN.path;
   },
 
   getRegistrationURL() {
-    return PATHS.AUTH.children.REGISTRATION.path;
+    return PATHS.AUTH.url + PATHS.AUTH.children.REGISTRATION.path;
   },
 };

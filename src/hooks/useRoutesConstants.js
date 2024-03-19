@@ -5,10 +5,7 @@ import { PATHS } from 'const/paths';
 import HomePage from 'pages/HomePage';
 import BoardsPage from 'pages/BoardsPage';
 import FullBoardPage from 'pages/FullBoardPage';
-import LoginPage from 'pages/LoginPage';
-import RegistrationPage from 'pages/RegistrationPage';
-
-import RedirectToLogin from 'components/Redirects/RedirectToLogin';
+import AuthPage from 'pages/AuthPage';
 
 export const useRoutesConstants = () => {
   const routes = useRoutes([
@@ -30,15 +27,7 @@ export const useRoutesConstants = () => {
     /* AUTH */
     {
       path: PATHS.AUTH.path,
-      element: <RedirectToLogin />,
-    },
-    {
-      path: PATHS.AUTH.children.LOGIN.path,
-      element: <LoginPage />,
-    },
-    {
-      path: PATHS.AUTH.children.REGISTRATION.path,
-      element: <RegistrationPage />,
+      element: <AuthPage />,
     },
   ]);
 
