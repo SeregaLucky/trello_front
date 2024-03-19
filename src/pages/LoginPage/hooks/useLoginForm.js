@@ -2,25 +2,19 @@ import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
+import { useGetUser } from './useGetUser';
+
 import { noticeError, noticeSuccess } from 'helpers/showNotices';
-import { useRegistrationUser } from './useRegistrationUser';
+import { YupMesses } from 'helpers/helpersYup';
 
 const schema = yup.object({
-  login: yup
-    .string()
-    .required('Login can not be empty')
-    // .label('111')
-    .default(''),
+  login: yup.string().required(YupMesses.REQUIRED('Login')).default(''),
 
-  password: yup
-    .string()
-    .required('Password can not be empty')
-    // .label('222')
-    .default(''),
+  password: yup.string().required(YupMesses.REQUIRED('Password')).default(''),
 });
 
-const useRegistrationForm = () => {
-  const { registrationUser, loading } = useRegistrationUser();
+export const useLoginForm = () => {
+  const { getUser, loading } = useGetUser();
 
   /* FORM */
   const {
@@ -39,7 +33,7 @@ const useRegistrationForm = () => {
     noticeSuccess('DONE');
     noticeError('Error');
 
-    // registrationUser(login, password);
+    // getUser(login, password);
   };
 
   return {
@@ -49,5 +43,3 @@ const useRegistrationForm = () => {
     onSubmit: handleSubmit(onSubmit),
   };
 };
-
-export default useRegistrationForm;

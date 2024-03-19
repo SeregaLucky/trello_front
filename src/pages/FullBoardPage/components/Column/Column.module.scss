@@ -12,7 +12,7 @@
   background-color: #f1f2f4;
   /* padding: 0 8px 8px 8px; */
   padding: 8px;
-  border-radius: 12px;
+  border-radius: var(--border-radius-second);
   box-shadow: 0px 1px 1px #091e4240, 0px 0px 1px #091e424f;
 }
 
@@ -40,7 +40,7 @@
   width: 100%;
   background-color: #f0f2f4;
   border: none;
-  border-radius: 8px;
+  border-radius: var(--border-radius-first);
   font-weight: 600;
   padding: 0 8px;
   resize: none;

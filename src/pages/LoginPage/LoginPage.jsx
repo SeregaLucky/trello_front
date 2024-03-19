@@ -2,7 +2,7 @@ import { ButtonAuth, Input } from 'ui';
 import AuthHeader from 'components/AuthHeader';
 import AuthRedirectFormTo from 'components/AuthRedirectFormTo';
 
-import { useLoginForm } from './useLoginForm';
+import { useLoginForm } from './hooks/useLoginForm';
 
 import styles from './LoginPage.module.scss';
 
@@ -30,7 +30,7 @@ const LoginPage = () => {
           />
         </div>
 
-        <ButtonAuth isLoading={isLoading}>Sing in</ButtonAuth>
+        <ButtonAuth isDisabled={isLoading}>Sing in</ButtonAuth>
       </form>
 
       <AuthRedirectFormTo toNamePage="registration" />

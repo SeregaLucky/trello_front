@@ -1,33 +1,42 @@
-import { AuthRedirectFormTo, ButtonAuth, LabelInput } from 'ui';
+import { ButtonAuth, Input } from 'ui';
 
-import useRegistrationForm from './useRegistrationForm';
+import useRegistrationForm from './hooks/useRegistrationForm';
+import AuthHeader from 'components/AuthHeader';
+import AuthRedirectFormTo from 'components/AuthRedirectFormTo';
+
+import { YupPlaceholders } from 'helpers/helpersYup';
 
 const RegistrationPage = () => {
   const { register, isLoading, errors, onSubmit } = useRegistrationForm();
 
   return (
     <div>
-      <h2>Sing up</h2>
+      <AuthHeader titlePage="Sing up" />
 
       <form onSubmit={onSubmit}>
-        <LabelInput
+        <Input
           type="text"
-          placeholder="Login..."
+          placeholder={YupPlaceholders.LOGIN}
           register={register('login')}
           error={errors.login}
         />
-
-        <LabelInput
+        <Input
           type="password"
-          placeholder="Password..."
+          placeholder={YupPlaceholders.PASSWORD}
           register={register('password')}
           error={errors.password}
         />
+        <Input
+          type="password"
+          placeholder={YupPlaceholders.CONFIRM_PASSWORD}
+          register={register('confirmPassword')}
+          error={errors.confirmPassword}
+        />
 
-        <ButtonAuth isLoading={isLoading}>Sing up</ButtonAuth>
+        <ButtonAuth isDisabled={isLoading}>Sing up</ButtonAuth>
       </form>
 
-      {/* <AuthRedirectFormTo toNamePage="login" /> */}
+      <AuthRedirectFormTo toNamePage="login" />
     </div>
   );
 };

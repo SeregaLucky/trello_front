@@ -3,7 +3,7 @@
   background-color: inherit;
   font-size: 14px;
   color: #172b4d;
-  border-radius: 8px;
+  border-radius: var(--border-radius-first);
 
   &.small {
     width: 32px;
