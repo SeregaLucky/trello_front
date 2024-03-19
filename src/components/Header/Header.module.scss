@@ -1,0 +1,18 @@
+.headerTop {
+  display: flex;
+}
+
+.logo {
+  display: block;
+  transform: scale(0.6);
+}
+
+.list {
+  display: flex;
+}
+
+.link {
+  &.active {
+    color: orange;
+  }
+}

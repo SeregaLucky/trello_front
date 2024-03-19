@@ -1,0 +1,37 @@
+.taskDetail {
+  background-color: #f0f2f4;
+  border-radius: 12px;
+  padding: 16px;
+
+  width: 768px;
+}
+
+.taskTitle {
+  display: none;
+}
+
+.taskHeader {
+  position: relative;
+}
+
+.titleInput {
+  border: none;
+  background-color: #f0f2f4;
+  border-radius: 4px;
+  font-size: 20px;
+  font-weight: 600;
+  height: 40px;
+  width: calc(100% - 40px);
+  padding: 0 10px;
+}
+
+.titleInput:focus {
+  background-color: #fff;
+  box-shadow: inset 0 0 0 2px #388bff;
+}
+
+.buttonClose {
+  position: absolute;
+  top: 0;
+  right: 0;
+}

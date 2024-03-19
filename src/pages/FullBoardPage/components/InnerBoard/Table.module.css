@@ -1,0 +1,12 @@
+.containerAaa {
+  display: flex;
+}
+
+.listColumn {
+  border: 2px solid salmon;
+  /* width: 180px; */
+
+  display: flex;
+  align-items: flex-start;
+  /* gap: 20px; */
+}

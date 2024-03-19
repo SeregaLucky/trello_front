@@ -1,0 +1,47 @@
+/* https://stackoverflow.com/questions/2011142/how-to-change-the-style-of-the-title-attribute-inside-an-anchor-tag */
+
+.container {
+  position: relative;
+  display: inline-block;
+  // font-size: 12px;
+}
+
+// .container[data-title]:after {
+//   content: attr(data-title);
+
+//   position: absolute;
+//   top: 20px;
+//   left: 50%;
+//   transform: translateX(-50%);
+//   z-index: 999;
+
+//   white-space: nowrap;
+//   background-color: #172b4d;
+//   border-radius: 3px;
+//   color: #fff;
+//   padding: 2px 4px;
+
+//   visibility: hidden;
+//   opacity: 0;
+
+//   pointer-events: none;
+// }
+
+// .container[data-title]:hover::after {
+//   opacity: 1;
+//   transition: 0.3s;
+//   visibility: visible;
+// }
+
+//
+//
+
+// .container {
+//   position: relative;
+// }
+
+// .titleText {
+//   position: absolute;
+//   left: 0;
+//   bottom: -20px;
+// }

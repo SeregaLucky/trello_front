@@ -1,0 +1,28 @@
+.item {
+  // position: relative;
+}
+
+.link {
+  position: relative;
+
+  display: block;
+  width: 160px;
+  height: 96px;
+  border-radius: 3px;
+  padding: 8px;
+  background-color: orange;
+}
+
+.link span {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  font-size: 14px;
+  color: red;
+}
+
+.title {
+  color: #fff;
+  word-wrap: break-word;
+  font-size: 16px;
+}

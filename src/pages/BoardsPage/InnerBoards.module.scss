@@ -1,0 +1,18 @@
+.list {
+  display: grid;
+  // grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, 160px);
+  grid-gap: 20px;
+}
+
+.buttonAdd {
+  display: block;
+  width: 160px;
+  height: 96px;
+  border-radius: 3px;
+  border: none;
+  padding: 8px;
+  background-color: #f0f2f4;
+  font-size: 12px;
+  color: #172b4d;
+}
