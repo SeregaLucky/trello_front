@@ -2,17 +2,9 @@ import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-import { useRegistrationUser } from './useRegistrationUser';
-
 import { MIN_PASSWORD_LENGTH, YupMesses } from 'helpers/helpersYup';
 
 const schema = yup.object({
-  email: yup
-    .string()
-    .required(YupMesses.REQUIRED('Email'))
-    .email(YupMesses.EMAIL)
-    .default(''),
-
   password: yup
     .string()
     .required(YupMesses.REQUIRED('Password'))
@@ -31,9 +23,7 @@ const schema = yup.object({
     .default(''),
 });
 
-export const useRegistrationForm = () => {
-  const { registrationUser, loading } = useRegistrationUser();
-
+export const useResetPasswordForm = () => {
   /* FORM */
   const {
     register,
@@ -46,15 +36,13 @@ export const useRegistrationForm = () => {
   });
 
   /* METHOD */
-  const onSubmit = ({ email, password, confirmPassword }) => {
-    console.log({ email, password, confirmPassword });
-
-    // registrationUser(login, password);
+  const onSubmit = ({ password, confirmPassword }) => {
+    console.log({ password, confirmPassword });
   };
 
   return {
     register,
-    isLoading: loading,
+    isLoading: false,
     errors,
     onSubmit: handleSubmit(onSubmit),
   };

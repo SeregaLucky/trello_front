@@ -16,7 +16,7 @@ export const YupMesses = {
  * Placeholders text
  */
 export const YupPlaceholders = {
-  LOGIN: 'Login...',
+  EMAIL: 'Email...',
   PASSWORD: 'Password...',
   CONFIRM_PASSWORD: 'Confirm Password...',
 };

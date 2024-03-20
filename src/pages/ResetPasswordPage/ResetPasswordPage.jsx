@@ -1,29 +1,21 @@
 import { ButtonAuth, Input } from 'ui';
-
 import AuthHeader from 'components/AuthHeader';
-import AuthRedirectFormTo from 'components/AuthRedirectFormTo';
 
-import { useRegistrationForm } from './hooks/useRegistrationForm';
+import { useResetPasswordForm } from './hooks/useResetPasswordForm';
 
 import { YupPlaceholders } from 'helpers/helpersYup';
 
-import styles from './RegistrationPage.module.scss';
+import styles from './ResetPasswordPage.module.scss';
 
-const RegistrationPage = () => {
-  const { register, isLoading, errors, onSubmit } = useRegistrationForm();
+const ResetPasswordPage = () => {
+  const { register, isLoading, errors, onSubmit } = useResetPasswordForm();
 
   return (
     <div>
-      <AuthHeader titlePage="Sing up" />
+      <AuthHeader titlePage="Create new Password?" />
 
       <form onSubmit={onSubmit}>
         <div className={styles.containerInputs}>
-          <Input
-            type="text"
-            placeholder={YupPlaceholders.EMAIL}
-            register={register('email')}
-            error={errors.email}
-          />
           <Input
             type="password"
             placeholder={YupPlaceholders.PASSWORD}
@@ -38,12 +30,10 @@ const RegistrationPage = () => {
           />
         </div>
 
-        <ButtonAuth isDisabled={isLoading}>Sing up</ButtonAuth>
+        <ButtonAuth isDisabled={isLoading}>Reset Password</ButtonAuth>
       </form>
-
-      <AuthRedirectFormTo toNamePage="login" />
     </div>
   );
 };
 
-export default RegistrationPage;
+export default ResetPasswordPage;

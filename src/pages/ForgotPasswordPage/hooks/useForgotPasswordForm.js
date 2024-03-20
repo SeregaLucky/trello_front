@@ -2,9 +2,7 @@ import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-import { useGetUser } from './useGetUser';
-
-import { MIN_PASSWORD_LENGTH, YupMesses } from 'helpers/helpersYup';
+import { YupMesses } from 'helpers/helpersYup';
 
 const schema = yup.object({
   email: yup
@@ -12,17 +10,9 @@ const schema = yup.object({
     .required(YupMesses.REQUIRED('Email'))
     .email(YupMesses.EMAIL)
     .default(''),
-
-  password: yup
-    .string()
-    .required(YupMesses.REQUIRED('Password'))
-    .min(MIN_PASSWORD_LENGTH, YupMesses.MIN_STR(MIN_PASSWORD_LENGTH))
-    .default(''),
 });
 
-export const useLoginForm = () => {
-  const { getUser, loading } = useGetUser();
-
+export const useForgotPasswordForm = () => {
   /* FORM */
   const {
     register,
@@ -35,15 +25,13 @@ export const useLoginForm = () => {
   });
 
   /* METHOD */
-  const onSubmit = ({ email, password }) => {
-    console.log({ email, password });
-
-    // getUser(login, password);
+  const onSubmit = ({ email }) => {
+    console.log({ email });
   };
 
   return {
     register,
-    isLoading: loading,
+    isLoading: false,
     errors,
     onSubmit: handleSubmit(onSubmit),
   };

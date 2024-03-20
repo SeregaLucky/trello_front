@@ -1,29 +1,24 @@
 import { ButtonAuth, Input } from 'ui';
-
 import AuthHeader from 'components/AuthHeader';
-import AuthRedirectFormTo from 'components/AuthRedirectFormTo';
 
-import { useRegistrationForm } from './hooks/useRegistrationForm';
+import { useForgotPasswordForm } from './hooks/useForgotPasswordForm';
+import { useNavigation } from 'hooks/useNavigation';
 
 import { YupPlaceholders } from 'helpers/helpersYup';
 
-import styles from './RegistrationPage.module.scss';
+import styles from './ForgotPasswordPage.module.scss';
 
 const RegistrationPage = () => {
-  const { register, isLoading, errors, onSubmit } = useRegistrationForm();
+  const { register, isLoading, errors, onSubmit } = useForgotPasswordForm();
+
+  const { goToLogin } = useNavigation();
 
   return (
     <div>
-      <AuthHeader titlePage="Sing up" />
+      <AuthHeader titlePage="Forgot Password?" />
 
       <form onSubmit={onSubmit}>
         <div className={styles.containerInputs}>
-          <Input
-            type="text"
-            placeholder={YupPlaceholders.EMAIL}
-            register={register('email')}
-            error={errors.email}
-          />
           <Input
             type="password"
             placeholder={YupPlaceholders.PASSWORD}
@@ -38,10 +33,13 @@ const RegistrationPage = () => {
           />
         </div>
 
-        <ButtonAuth isDisabled={isLoading}>Sing up</ButtonAuth>
+        <div className={styles.controllers}>
+          <ButtonAuth isDisabled={isLoading}>Send</ButtonAuth>
+          <ButtonAuth type="button" onClick={goToLogin}>
+            Cancel
+          </ButtonAuth>
+        </div>
       </form>
-
-      <AuthRedirectFormTo toNamePage="login" />
     </div>
   );
 };

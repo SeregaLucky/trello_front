@@ -16,6 +16,10 @@
  * @property {string} AUTH.children.LOGIN.path - Link to login page
  * @property {Object} AUTH.children.REGISTRATION - data for link
  * @property {string} AUTH.children.REGISTRATION.path - Link to registration page
+ * @property {Object} AUTH.children.FORGOT_PASSWORD - data for link
+ * @property {string} AUTH.children.FORGOT_PASSWORD.path - Link to reset-pass page
+ * @property {Object} AUTH.children.RESET_PASSWORD - data for link
+ * @property {string} AUTH.children.RESET_PASSWORD.path - Link to reset-pass page
  */
 
 /**
@@ -40,6 +44,8 @@ export const PATHS = {
     children: {
       LOGIN: { path: '/login' },
       REGISTRATION: { path: '/registration' },
+      FORGOT_PASSWORD: { path: '/forgot-password' },
+      RESET_PASSWORD: { path: '/reset-password' },
     },
   },
 };

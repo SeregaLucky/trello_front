@@ -10,6 +10,7 @@ import { PATHS } from 'const/paths';
  * @property {function(string|number): string} getFullBoardURL - Function to get the URL of the board's full information page
  * @property {function(): string} getLoginURL - Function to get the login page URL
  * @property {function(): string} getRegistrationURL - Function to get the registration page URL
+ * @property {function(): string} getForgotPasswordURL - Function to get the forgot-password page URL
  */
 
 /**
@@ -42,5 +43,9 @@ export const Urls = {
 
   getRegistrationURL() {
     return PATHS.AUTH.url + PATHS.AUTH.children.REGISTRATION.path;
+  },
+
+  getForgotPasswordURL() {
+    return PATHS.AUTH.url + PATHS.AUTH.children.FORGOT_PASSWORD.path;
   },
 };
