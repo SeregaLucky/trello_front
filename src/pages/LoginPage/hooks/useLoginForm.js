@@ -21,7 +21,7 @@ const schema = yup.object({
 });
 
 export const useLoginForm = () => {
-  const { getUser, loading } = useGetUser();
+  const { loginUser, loading } = useGetUser();
 
   /* FORM */
   const {
@@ -38,7 +38,7 @@ export const useLoginForm = () => {
   const onSubmit = ({ email, password }) => {
     console.log({ email, password });
 
-    // getUser(login, password);
+    // loginUser(login, password);
   };
 
   return {

@@ -12,6 +12,11 @@
 }
 
 .link {
+  &:hover {
+    transition: 0.1s;
+    color: rgba(255, 165, 0, 0.2);
+  }
+
   &.active {
     color: orange;
   }

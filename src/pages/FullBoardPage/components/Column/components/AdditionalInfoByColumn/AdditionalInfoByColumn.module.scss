@@ -13,10 +13,10 @@
   background: transparent;
   border: none;
   border-radius: var(--border-radius-first);
-}
 
-.buttonToggleMoreInfo:hover {
-  background-color: #d0d4db;
+  &:hover {
+    background-color: #d0d4db;
+  }
 }
 
 //
@@ -66,10 +66,10 @@
   width: 100%;
   font-size: 14px;
   color: #172b4d;
-}
 
-.buttonAction:hover {
-  background-color: #d0d4db;
+  &:hover {
+    background-color: #d0d4db;
+  }
 }
 
 .buttonClose {
@@ -79,10 +79,10 @@
 
 .colorItem {
   display: flex;
-}
 
-.colorItem:not(:last-child) {
-  margin-bottom: 4px;
+  &:not(:last-child) {
+    margin-bottom: 4px;
+  }
 }
 
 .colorLabel {

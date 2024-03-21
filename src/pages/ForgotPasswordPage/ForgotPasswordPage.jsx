@@ -18,20 +18,12 @@ const RegistrationPage = () => {
       <AuthHeader titlePage="Forgot Password?" />
 
       <form onSubmit={onSubmit}>
-        <div className={styles.containerInputs}>
-          <Input
-            type="password"
-            placeholder={YupPlaceholders.PASSWORD}
-            register={register('password')}
-            error={errors.password}
-          />
-          <Input
-            type="password"
-            placeholder={YupPlaceholders.CONFIRM_PASSWORD}
-            register={register('confirmPassword')}
-            error={errors.confirmPassword}
-          />
-        </div>
+        <Input
+          type="text"
+          placeholder={YupPlaceholders.EMAIL}
+          register={register('email')}
+          error={errors.email}
+        />
 
         <div className={styles.controllers}>
           <ButtonAuth isDisabled={isLoading}>Send</ButtonAuth>

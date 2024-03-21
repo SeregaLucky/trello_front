@@ -1,19 +1,21 @@
+import { Link } from 'react-router-dom';
+
 import { ButtonAuth, Input } from 'ui';
 import AuthHeader from 'components/AuthHeader';
 import AuthRedirectFormTo from 'components/AuthRedirectFormTo';
 
 import { useLoginForm } from './hooks/useLoginForm';
 
-import styles from './LoginPage.module.scss';
 import { YupPlaceholders } from 'helpers/helpersYup';
-import { Link } from 'react-router-dom';
 import { Urls } from 'helpers/urls';
+
+import styles from './LoginPage.module.scss';
 
 const LoginPage = () => {
   const { register, isLoading, errors, onSubmit } = useLoginForm();
 
   return (
-    <div>
+    <div className={styles.loginContainer}>
       <AuthHeader titlePage="Log in to your account" />
 
       <form onSubmit={onSubmit}>

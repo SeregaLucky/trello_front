@@ -14,11 +14,11 @@ export const useNavigation = () => {
 
   const goToRegistration = () => navigate(Urls.getRegistrationURL());
 
-  // const goToForgotPassword = () => navigate(Urls.getForgotPasswordURL());
+  const goToBoards = () => navigate(Urls.getBoardsURL());
 
   return {
     goToLogin,
     goToRegistration,
-    // goToForgotPassword,
+    goToBoards,
   };
 };

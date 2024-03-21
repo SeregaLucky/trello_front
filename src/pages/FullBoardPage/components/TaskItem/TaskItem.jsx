@@ -7,10 +7,11 @@ import { ReactComponent as DescriptionIcon } from 'assets/icons/description.svg'
 
 import { useRemoveTask } from './useRemoveTask';
 
-import styles from './TaskItem.module.css';
 import TitleTeg from 'components/TitleTeg/TitleTeg';
 import { TitleTexts } from 'const/descriptionTexts';
 import TaskDetail from '../TaskDetail';
+
+import styles from './TaskItem.module.scss';
 
 const TaskItem = ({ task, provided }) => {
   // console.log('RENDER TaskItem');

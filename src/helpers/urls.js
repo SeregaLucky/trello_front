@@ -24,7 +24,7 @@ export const Urls = {
     return PATHS.HOME.path;
   },
 
-  /* BOARDS - FULL BOARD */
+  /* BOARDS */
   getBoardsURL() {
     return PATHS.BOARDS.path;
   },
