@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { generatePath, useNavigate } from 'react-router-dom';
 
 import { useAddBoard } from './useAddBoard';
+
 import { PATHS } from 'const/paths';
 
 const FormCreateBoard = () => {

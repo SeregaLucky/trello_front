@@ -39,9 +39,6 @@ const TaskItem = ({ task, provided }) => {
     >
       <div
         className={styles.mainContent}
-        // ref={provided.innerRef}
-        // {...provided.draggableProps}
-        // {...provided.dragHandleProps}
         onClick={() => setIsOpenModal(true)}
         role="presentation"
       >

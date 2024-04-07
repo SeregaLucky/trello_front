@@ -38,14 +38,6 @@ const LabelInput = ({
         error={error}
       />
 
-      {/* <input
-        type={type}
-        id={uniqId}
-        placeholder={placeholder}
-        autoFocus={autoFocus}
-        {...register}
-      /> */}
-
       {error?.message && <span>{error.message}</span>}
     </div>
   );

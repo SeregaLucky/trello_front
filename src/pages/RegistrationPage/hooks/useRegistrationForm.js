@@ -52,17 +52,9 @@ export const useRegistrationForm = () => {
     console.log({ email, password, confirmPassword });
 
     try {
-      const ddd = await registrationUser({ email, password, confirmPassword });
-      // console.log('ddd', ddd);
-      // goToHome();
+      await registrationUser({ email, password, confirmPassword });
     } catch (error) {
-      // console.log(111, error);
-      // console.log(222, error.message);
-      // console.log(333, error.response);
-      // console.log(444, error.errors);
-      // noticeError(error.message);
-
-      const { message } = error;
+      // const { message } = error;
       // console.log(777, message);
     }
   };

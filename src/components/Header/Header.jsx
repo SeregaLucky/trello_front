@@ -32,32 +32,6 @@ const links = [
   },
 ];
 
-const publicLinks = [
-  {
-    path: Urls.getHomeURL(),
-    label: 'Home',
-  },
-  {
-    path: Urls.getLoginURL(),
-    label: 'Login',
-  },
-  {
-    path: Urls.getRegistrationURL(),
-    label: 'Registration',
-  },
-];
-
-const privateLinks = [
-  {
-    path: Urls.getHomeURL(),
-    label: 'Home',
-  },
-  {
-    path: Urls.getBoardsURL(),
-    label: 'Boards',
-  },
-];
-
 const Header = () => {
   return (
     <header className={styles.headerTop}>

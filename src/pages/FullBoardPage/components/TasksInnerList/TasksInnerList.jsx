@@ -8,8 +8,6 @@ const TasksInnerList = ({
   droppableProps,
   isBlockedMoveTasks,
 }) => {
-  // console.log('tasks', tasks);
-
   return (
     <ul ref={dropProvided.innerRef} {...droppableProps}>
       {tasks.map((task, index) => (

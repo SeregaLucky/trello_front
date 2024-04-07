@@ -23,7 +23,6 @@ const schema = yup.object({
 
 export const useLoginForm = () => {
   const { loginUser, loading } = useGetUser();
-  // const { loginUser, loading } = { loginUser: 1, loading: false };
 
   /* FORM */
   const {
