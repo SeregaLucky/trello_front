@@ -9,10 +9,33 @@ const links = [
   {
     path: Urls.getHomeURL(),
     label: 'Home',
+    onlyPublic: true,
+    onlyPrivate: false,
   },
   {
     path: Urls.getBoardsURL(),
     label: 'Boards',
+    onlyPublic: false,
+    onlyPrivate: true,
+  },
+  {
+    path: Urls.getLoginURL(),
+    label: 'Login',
+    onlyPublic: true,
+    onlyPrivate: false,
+  },
+  {
+    path: Urls.getRegistrationURL(),
+    label: 'Registration',
+    onlyPublic: true,
+    onlyPrivate: false,
+  },
+];
+
+const publicLinks = [
+  {
+    path: Urls.getHomeURL(),
+    label: 'Home',
   },
   {
     path: Urls.getLoginURL(),
@@ -24,14 +47,25 @@ const links = [
   },
 ];
 
+const privateLinks = [
+  {
+    path: Urls.getHomeURL(),
+    label: 'Home',
+  },
+  {
+    path: Urls.getBoardsURL(),
+    label: 'Boards',
+  },
+];
+
 const Header = () => {
   return (
     <header className={styles.headerTop}>
-      <h1>
-        <Link to={Urls.getHomeURL()}>T</Link>
-      </h1>
-
       <nav>
+        <h1>
+          <Link to={Urls.getHomeURL()}>T</Link>
+        </h1>
+
         <ul className={styles.list}>
           {links.map(({ path, label }) => (
             <li className={styles.navigationItem} key={path}>

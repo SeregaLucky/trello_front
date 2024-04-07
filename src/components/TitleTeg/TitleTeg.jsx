@@ -1,8 +1,5 @@
-/*
- * DOCS Tooltip: https://react-tooltip.com/docs/getting-started
- */
-
 import { useId } from 'react';
+/* DOCS Tooltip: https://react-tooltip.com/docs/getting-started */
 import { Tooltip } from 'react-tooltip';
 
 import styles from './TitleTeg.module.scss';

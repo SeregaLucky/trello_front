@@ -22,7 +22,7 @@ const Input = ({
   register,
   error,
 }) => {
-  const [isShowPassword, setIsShowPassword] = useState(false);
+  const [isShowPassword, setIsShowPassword] = useState(true);
 
   const isPasswordInput = type === 'password';
 

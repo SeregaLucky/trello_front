@@ -31,7 +31,7 @@ export const useResetPasswordForm = () => {
     handleSubmit,
   } = useForm({
     resolver: yupResolver(schema),
-    delayError: 1000,
+
     mode: 'onSubmit',
   });
 

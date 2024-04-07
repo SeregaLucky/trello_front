@@ -8,23 +8,29 @@ import { useNavigation } from 'hooks/useNavigation';
 
 /* IN PROGRESS */
 export const useGetUser = () => {
-  const { goToBoards } = useNavigation();
+  // const { goToBoards } = useNavigation();
 
   const [loginUser, { error, loading }] = useMutation(
     LOGIN_USER,
 
-    {
-      update(cache, { data: { user } }) {},
-    },
+    // {
+    //   update(cache, { data: { user } }) {},
+    // },
   );
 
-  // console.log(111);
-  // error ? noticeError('Error') : goToBoards();
-  // noticeError('Error');
-
   return {
-    // loginUser: (login, password) => loginUser(login, password),
-    loginUser: (login, password) => console.log(login, password),
-    loading: false,
+    // loginUser: async ({ login, password }) => {
+    //   try {
+    //     await loginUser({ variables: { login, password } });
+    //   } catch (error) {
+    //     console.log('error.message', error.message);
+    //     throw new Error(error);
+    //   }
+    // },
+
+    loginUser: ({ email, password }) =>
+      loginUser({ variables: { email, password } }),
+
+    loading,
   };
 };

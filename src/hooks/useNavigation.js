@@ -10,6 +10,8 @@ import { Urls } from 'helpers/urls';
 export const useNavigation = () => {
   const navigate = useNavigate();
 
+  const goToHome = () => navigate(Urls.getHomeURL());
+
   const goToLogin = () => navigate(Urls.getLoginURL());
 
   const goToRegistration = () => navigate(Urls.getRegistrationURL());
@@ -17,6 +19,7 @@ export const useNavigation = () => {
   const goToBoards = () => navigate(Urls.getBoardsURL());
 
   return {
+    goToHome,
     goToLogin,
     goToRegistration,
     goToBoards,
