@@ -18,10 +18,13 @@ export const useNavigation = () => {
 
   const goToBoards = () => navigate(Urls.getBoardsURL());
 
+  const goToFullBoard = boardId => navigate(Urls.getFullBoardURL(boardId));
+
   return {
     goToHome,
     goToLogin,
     goToRegistration,
     goToBoards,
+    goToFullBoard,
   };
 };

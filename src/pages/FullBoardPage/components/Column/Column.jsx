@@ -61,12 +61,8 @@ const Column = ({ columnId, columnIndex, column }) => {
             {...provided.dragHandleProps}
           >
             <div
-              // ref={containerRef}
               className={styles.mainContent}
               style={{ backgroundColor: columnColor }}
-              // ref={provided.innerRef}
-              // {...provided.draggableProps}
-              // {...provided.dragHandleProps}
             >
               <div className={styles.columnHeader}>
                 {!isShowTextarea && (
@@ -89,15 +85,6 @@ const Column = ({ columnId, columnIndex, column }) => {
                   />
                 )}
 
-                {/* <textarea
-                  ref={inputRef}
-                  className={styles.textareaTitle}
-                  value={title}
-                  onChange={e => setTitle(e.target.value)}
-                  onKeyUp={textAreaAdjust}
-                  onFocus={textAreaAdjust}
-                /> */}
-
                 <AdditionalInfoByColumn
                   columnId={columnId}
                   columnColor={columnColor}
@@ -116,4 +103,3 @@ const Column = ({ columnId, columnIndex, column }) => {
 };
 
 export default Column;
-// export default memo(Column);

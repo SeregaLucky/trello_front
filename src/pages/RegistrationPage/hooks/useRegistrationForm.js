@@ -5,7 +5,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useRegistrationUser } from './useRegistrationUser';
 
 import { MIN_PASSWORD_LENGTH, YupMesses } from 'helpers/helpersYup';
-import { useNavigation } from 'hooks/useNavigation';
 import { noticeError } from 'helpers/showNotices';
 
 const schema = yup.object({
@@ -35,7 +34,6 @@ const schema = yup.object({
 
 export const useRegistrationForm = () => {
   const { registrationUser, loading } = useRegistrationUser();
-  const { goToHome } = useNavigation();
 
   /* FORM */
   const {
@@ -49,19 +47,16 @@ export const useRegistrationForm = () => {
 
   /* METHOD */
   const onSubmit = async ({ email, password, confirmPassword }) => {
-    console.log({ email, password, confirmPassword });
-
     try {
       await registrationUser({ email, password, confirmPassword });
     } catch (error) {
-      // const { message } = error;
-      // console.log(777, message);
+      noticeError(error.message);
     }
   };
 
   return {
     register,
-    isLoading: loading,
+    loading,
     errors,
     onSubmit: handleSubmit(onSubmit),
   };

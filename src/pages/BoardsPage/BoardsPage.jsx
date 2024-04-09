@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 
 import InnerBoards from './InnerBoards';
-import RedirectToLogin from 'components/Redirects/RedirectToLogin';
 
 import { ALL_BOARDS } from 'apollo/boards';
 
@@ -26,16 +25,14 @@ const BoardsPage = () => {
   }
 
   if (error) {
-    const errorCode = error.extensions?.code; // Получаем код ошибки
-    console.log('errorCode', errorCode);
+    // const errorCode = error.extensions?.code; // Получаем код ошибки
+    // console.log('errorCode', errorCode);
     const { message, ...rest } = error;
-    console.log('graphQLErrors', rest.graphQLErrors[0].extensions.code);
-    console.log('extensions', error.extensions);
-    console.log('code', error.extensions?.code);
+    // console.log('graphQLErrors', rest.graphQLErrors[0].extensions.code);
+    // console.log('extensions', error.extensions);
+    // console.log('code', error.extensions?.code);
 
     if (message === 'You are not authorized to perform this action') {
-      // noticeError(message);
-      // return <RedirectToLogin />;
       return null;
     }
 

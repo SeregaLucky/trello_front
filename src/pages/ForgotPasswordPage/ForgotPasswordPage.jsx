@@ -9,7 +9,7 @@ import { YupPlaceholders } from 'helpers/helpersYup';
 import styles from './ForgotPasswordPage.module.scss';
 
 const RegistrationPage = () => {
-  const { register, isLoading, errors, onSubmit } = useForgotPasswordForm();
+  const { register, loading, errors, onSubmit } = useForgotPasswordForm();
 
   const { goToLogin } = useNavigation();
 
@@ -26,7 +26,7 @@ const RegistrationPage = () => {
         />
 
         <div className={styles.controllers}>
-          <ButtonAuth isDisabled={isLoading}>Send</ButtonAuth>
+          <ButtonAuth isDisabled={loading}>Send</ButtonAuth>
           <ButtonAuth type="button" onClick={goToLogin}>
             Cancel
           </ButtonAuth>

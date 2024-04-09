@@ -31,7 +31,7 @@ export const useForgotPasswordForm = () => {
 
   return {
     register,
-    isLoading: false,
+    loading: false,
     errors,
     onSubmit: handleSubmit(onSubmit),
   };

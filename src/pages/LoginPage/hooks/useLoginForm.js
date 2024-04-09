@@ -45,7 +45,7 @@ export const useLoginForm = () => {
 
   return {
     register,
-    isLoading: loading,
+    loading,
     errors,
     onSubmit: handleSubmit(onSubmit),
   };

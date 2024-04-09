@@ -12,7 +12,7 @@ import { Urls } from 'helpers/urls';
 import styles from './LoginPage.module.scss';
 
 const LoginPage = () => {
-  const { register, isLoading, errors, onSubmit } = useLoginForm();
+  const { register, onSubmit, loading, errors } = useLoginForm();
 
   return (
     <div className={styles.loginContainer}>
@@ -37,7 +37,7 @@ const LoginPage = () => {
 
         <Link to={Urls.getForgotPasswordURL()}>Forgot your password?</Link>
 
-        <ButtonAuth isDisabled={isLoading}>Sing in</ButtonAuth>
+        <ButtonAuth isDisabled={loading}>Sing in</ButtonAuth>
       </form>
 
       <AuthRedirectFormTo toNamePage="registration" />

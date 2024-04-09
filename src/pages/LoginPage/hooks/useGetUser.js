@@ -2,6 +2,7 @@ import { useMutation } from '@apollo/client';
 
 import { LOGIN_USER } from 'apollo/auth';
 
+/* IN PROGRESS */
 export const useGetUser = () => {
   const [loginUser, { loading }] = useMutation(
     LOGIN_USER,
