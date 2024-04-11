@@ -10,7 +10,7 @@ const InnerFullBoard = ({ board }) => {
     <div>
       <h3>InnerFullBoard</h3>
 
-      <InnerBoard dataColumns={dataColumns} columnsList={board.columns} />
+      <InnerBoard dataColumns={dataColumns} />
     </div>
   );
 };

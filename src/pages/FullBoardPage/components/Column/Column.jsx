@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 
 import TasksList from '../TasksList';
-import AdditionalInfoByColumn from './components/AdditionalInfoByColumn';
+import AdditionalInfoByColumn from '../AdditionalInfoByColumn';
 import FormTask from '../FormTask';
 
 import { useUpdateColumnTitle } from './useUpdateColumnTitle';
@@ -92,7 +92,6 @@ const Column = ({ columnId, columnIndex, column }) => {
               </div>
 
               <TasksList listId={columnId} tasks={tasks} />
-
               <FormTask columnId={columnId} />
             </div>
           </li>

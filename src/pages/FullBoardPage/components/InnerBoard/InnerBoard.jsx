@@ -3,15 +3,13 @@ import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import Column from '../Column';
 import CustomColumnForm from '../CustomColumnForm';
 
-import { useMainDragAndDrop } from './useMainDragAndDrop';
+import { useMainDragAndDrop } from './hooks/useMainDragAndDrop';
 
-import styles from './Table.module.css';
+import styles from './Table.module.scss';
 
-const InnerBoard = ({ dataColumns, columnsList }) => {
-  const { columns, orderedColumns, onDragEnd } = useMainDragAndDrop(
-    dataColumns,
-    columnsList,
-  );
+const InnerBoard = ({ dataColumns }) => {
+  const { columns, orderedColumns, onDragEnd } =
+    useMainDragAndDrop(dataColumns);
 
   return (
     <div>

@@ -2,31 +2,35 @@ import { useState } from 'react';
 import { format } from 'date-fns';
 
 import Modal from 'components/Modal';
-
+import TitleTeg from 'components/TitleTeg/TitleTeg';
+import { TitleTexts } from 'const/descriptionTexts';
+import TaskDetail from '../TaskDetail';
 import { ReactComponent as DescriptionIcon } from 'assets/icons/description.svg';
 
 import { useRemoveTask } from './useRemoveTask';
 
-import TitleTeg from 'components/TitleTeg/TitleTeg';
-import { TitleTexts } from 'const/descriptionTexts';
-import TaskDetail from '../TaskDetail';
+import { noticeError } from 'helpers/showNotices';
 
 import styles from './TaskItem.module.scss';
 
 const TaskItem = ({ task, provided }) => {
-  // console.log('RENDER TaskItem');
-  // console.log('RENDER TaskItem', task.id);
-  // const { title, description, createdDate } = task;
   const { id, title, createdDate } = task;
 
   const [isOpenModal, setIsOpenModal] = useState(false);
-
   const removeTaskById = useRemoveTask();
 
   const customDate = format(new Date(createdDate), 'yyyy-MM-dd HH:mm');
-
-  // const description = { isFulled: !!Math.round(Math.random()) };
   const description = { isFulled: true };
+
+  const oRemoveTask = async e => {
+    e.stopPropagation();
+
+    try {
+      removeTaskById(id);
+    } catch (error) {
+      noticeError(error.message);
+    }
+  };
 
   return (
     <li
@@ -34,8 +38,6 @@ const TaskItem = ({ task, provided }) => {
       {...provided.draggableProps}
       {...provided.dragHandleProps}
       className={styles.task}
-      // onClick={() => setIsOpenModal(true)}
-      // role="presentation"
     >
       <div
         className={styles.mainContent}
@@ -51,7 +53,7 @@ const TaskItem = ({ task, provided }) => {
           </TitleTeg>
         )}
 
-        {/* <button onClick={() => removeTaskById(id)}>Remove task</button> */}
+        <button onClick={oRemoveTask}>Remove task</button>
         {/* <button onClick={() => setIsOpenModal(true)}>Open Modal</button> */}
       </div>
 
@@ -68,4 +70,3 @@ const TaskItem = ({ task, provided }) => {
 };
 
 export default TaskItem;
-// export default memo(TaskItem);
