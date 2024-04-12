@@ -3,12 +3,13 @@ import { useState } from 'react';
 import { useAddColumn } from './useAddColumn';
 
 const CustomColumnForm = () => {
-  const addColumn = useAddColumn();
+  const { addColumn, loading } = useAddColumn();
 
-  // console.log('RENDER CustomColumnForm');
   const [value, setValue] = useState('');
 
   const onSubmit = e => {
+    if (loading) return;
+
     e.preventDefault();
 
     const valueTrim = value.trim();

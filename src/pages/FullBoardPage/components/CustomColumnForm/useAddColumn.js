@@ -26,5 +26,8 @@ export const useAddColumn = () => {
     },
   });
 
-  return title => addColumn({ variables: { boardId, title } });
+  return {
+    addColumn: title => addColumn({ variables: { boardId, title } }),
+    loading,
+  };
 };

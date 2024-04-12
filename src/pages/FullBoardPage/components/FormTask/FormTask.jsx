@@ -8,6 +8,8 @@ const FormTask = ({ columnId }) => {
   const { addTask, loading } = useAddTask();
 
   const onSubmit = e => {
+    if (loading) return;
+
     e.preventDefault();
 
     const valueTrim = value.trim();
@@ -26,7 +28,7 @@ const FormTask = ({ columnId }) => {
         placeholder="Title for this task..."
       />
 
-      <button type="button" onClick={() => setValue('')} disabled={loading}>
+      <button type="button" onClick={() => setValue('')}>
         X
       </button>
     </form>
