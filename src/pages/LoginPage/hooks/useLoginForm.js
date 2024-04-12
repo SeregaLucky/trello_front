@@ -5,6 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useGetUser } from './useGetUser';
 
 import { MIN_PASSWORD_LENGTH, YupMesses } from 'helpers/helpersYup';
+import { noticeError } from 'helpers/showNotices';
 
 const schema = yup.object({
   email: yup
@@ -30,20 +31,21 @@ export const useLoginForm = () => {
     handleSubmit,
   } = useForm({
     resolver: yupResolver(schema),
-    delayError: 1000,
     mode: 'onSubmit',
   });
 
   /* METHOD */
-  const onSubmit = ({ email, password }) => {
-    console.log({ email, password });
-
-    // loginUser(login, password);
+  const onSubmit = async ({ email, password }) => {
+    try {
+      await loginUser({ email, password });
+    } catch (error) {
+      noticeError(error.message);
+    }
   };
 
   return {
     register,
-    isLoading: loading,
+    loading,
     errors,
     onSubmit: handleSubmit(onSubmit),
   };

@@ -10,7 +10,7 @@ import { YupPlaceholders } from 'helpers/helpersYup';
 import styles from './RegistrationPage.module.scss';
 
 const RegistrationPage = () => {
-  const { register, isLoading, errors, onSubmit } = useRegistrationForm();
+  const { register, onSubmit, loading, errors } = useRegistrationForm();
 
   return (
     <div>
@@ -38,7 +38,7 @@ const RegistrationPage = () => {
           />
         </div>
 
-        <ButtonAuth isDisabled={isLoading}>Sing up</ButtonAuth>
+        <ButtonAuth isDisabled={loading}>Sing up</ButtonAuth>
       </form>
 
       <AuthRedirectFormTo toNamePage="login" />

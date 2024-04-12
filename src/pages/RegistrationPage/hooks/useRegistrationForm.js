@@ -5,6 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useRegistrationUser } from './useRegistrationUser';
 
 import { MIN_PASSWORD_LENGTH, YupMesses } from 'helpers/helpersYup';
+import { noticeError } from 'helpers/showNotices';
 
 const schema = yup.object({
   email: yup
@@ -16,10 +17,10 @@ const schema = yup.object({
   password: yup
     .string()
     .required(YupMesses.REQUIRED('Password'))
-    .min(MIN_PASSWORD_LENGTH, YupMesses.MIN_STR(MIN_PASSWORD_LENGTH))
-    .matches(/\d/, YupMesses.MIN_ONE_NUMERIC)
-    .matches(/\p{Lu}/u, YupMesses.MIN_ONE_UPPERCASE_LETTER)
-    .matches(/\p{Ll}/u, YupMesses.MIN_ONE_LOWERCASE_LETTER)
+    // .min(MIN_PASSWORD_LENGTH, YupMesses.MIN_STR(MIN_PASSWORD_LENGTH))
+    // .matches(/\d/, YupMesses.MIN_ONE_NUMERIC)
+    // .matches(/\p{Lu}/u, YupMesses.MIN_ONE_UPPERCASE_LETTER)
+    // .matches(/\p{Ll}/u, YupMesses.MIN_ONE_LOWERCASE_LETTER)
     .default(''),
 
   confirmPassword: yup
@@ -41,20 +42,21 @@ export const useRegistrationForm = () => {
     handleSubmit,
   } = useForm({
     resolver: yupResolver(schema),
-    delayError: 1000,
     mode: 'onSubmit',
   });
 
   /* METHOD */
-  const onSubmit = ({ email, password, confirmPassword }) => {
-    console.log({ email, password, confirmPassword });
-
-    // registrationUser(login, password);
+  const onSubmit = async ({ email, password, confirmPassword }) => {
+    try {
+      await registrationUser({ email, password, confirmPassword });
+    } catch (error) {
+      noticeError(error.message);
+    }
   };
 
   return {
     register,
-    isLoading: loading,
+    loading,
     errors,
     onSubmit: handleSubmit(onSubmit),
   };

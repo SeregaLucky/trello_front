@@ -33,5 +33,8 @@ export const useAddTask = () => {
     },
   });
 
-  return (columnId, title) => addTask({ variables: { columnId, title } });
+  return {
+    addTask: (columnId, title) => addTask({ variables: { columnId, title } }),
+    loading,
+  };
 };

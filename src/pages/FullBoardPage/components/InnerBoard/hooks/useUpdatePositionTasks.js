@@ -8,10 +8,9 @@ import { UPDATE_POSITION_TASKS } from 'apollo/tasks';
 export const useUpdatePositionTasks = () => {
   const { boardId } = useParams();
 
-  // const prevPositionsRef = useRef([]);
   const prevPositionsRef = useRef({});
 
-  const [updatePositionTasks, { error }] = useMutation(
+  const [updatePositionTasks] = useMutation(
     UPDATE_POSITION_TASKS,
 
     {
@@ -21,41 +20,15 @@ export const useUpdatePositionTasks = () => {
           variables: { id: boardId },
         });
 
-        // const ddd = prevPositionsRef.current.reduce((acc, columnId) => {
-        //   acc[columnId] = [];
-        //   return acc;
-        // }, {});
-
-        // const dataTasksByColumnId00 = newPositionTasks.reduce(
-        //   (acc, item) => {
-        //     if (!acc[item.columnId.id]) {
-        //       acc[item.columnId.id] = [item];
-        //       return acc;
-        //     }
-
-        //     acc[item.columnId.id].push(item);
-        //     return acc;
-        //   },
-        //   {},
-        // );
-
-        // const dataTasksByColumnId0 = newPositionTasks.reduce((acc, item) => {
-        //   // if (!acc[item.columnId.id]) {
-        //   //   acc[item.columnId.id] = [item];
-        //   //   return acc;
-        //   // }
-
-        //   acc[item.columnId.id].push(item);
-        //   return acc;
-        // }, ddd);
-
         const dataTasksByColumnId = newPositionTasks.reduce((acc, item) => {
+          if (!acc[item.columnId.id]) {
+            acc[item.columnId.id] = [item];
+            return acc;
+          }
+
           acc[item.columnId.id].push(item);
           return acc;
         }, prevPositionsRef.current);
-
-        // console.log('prevPositionsRef.current=', prevPositionsRef.current);
-        // console.log('dataTasksByColumnId==', dataTasksByColumnId);
 
         prevPositionsRef.current = {};
 
@@ -80,7 +53,6 @@ export const useUpdatePositionTasks = () => {
   );
 
   return (newListPositions, prevColumnIds) => {
-    // console.log('newListPositions 0', newListPositions);
     prevPositionsRef.current = prevColumnIds;
     updatePositionTasks({ variables: { newListPositions } });
   };

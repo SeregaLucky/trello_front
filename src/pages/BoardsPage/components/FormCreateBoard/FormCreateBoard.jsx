@@ -1,15 +1,15 @@
 import { useState } from 'react';
-import { generatePath, useNavigate } from 'react-router-dom';
 
 import { useAddBoard } from './useAddBoard';
-import { PATHS } from 'const/paths';
+
+import { useNavigation } from 'hooks/useNavigation';
+
+import { noticeError } from 'helpers/showNotices';
 
 const FormCreateBoard = () => {
-  const navigate = useNavigate();
-
+  const { goToFullBoard } = useNavigation();
   const [titleBoard, setTitleBoard] = useState('');
-
-  const addBoard = useAddBoard();
+  const { addBoard, loading } = useAddBoard();
 
   const onSubmitBoard = async e => {
     e.preventDefault();
@@ -17,13 +17,14 @@ const FormCreateBoard = () => {
     const titleBoardTrim = titleBoard.trim();
     if (titleBoardTrim.length === 0) return;
 
-    const { data } = await addBoard(titleBoardTrim);
+    try {
+      const { data } = await addBoard(titleBoardTrim);
 
-    setTitleBoard('');
-
-    navigate(
-      `${generatePath(PATHS.FULL_BOARD.path, { boardId: data.newBoard.id })}`,
-    );
+      setTitleBoard('');
+      goToFullBoard(data.newBoard.id);
+    } catch (error) {
+      noticeError(error.message);
+    }
   };
 
   return (
@@ -34,7 +35,9 @@ const FormCreateBoard = () => {
         onChange={e => setTitleBoard(e.target.value)}
       />
 
-      <button type="submit">Add</button>
+      <button type="submit" disabled={loading}>
+        Add
+      </button>
     </form>
   );
 };

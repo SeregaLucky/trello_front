@@ -1,13 +1,7 @@
 export const reorder = ({ list, startIndex, endIndex }) => {
   const result = [...list];
-  // console.log('list', list);
-  // console.log('startIndex', startIndex);
-  // console.log('endIndex', endIndex);
   const { 0: removedElement } = result.splice(startIndex, 1);
-  // console.log('removedElement', removedElement);
-  // console.log('copy result', [...result]);
   result.splice(endIndex, 0, removedElement);
-  // console.log('result', result);
 
   return result;
 };

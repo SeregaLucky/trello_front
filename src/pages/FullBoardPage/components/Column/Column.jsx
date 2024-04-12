@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 
 import TasksList from '../TasksList';
-import AdditionalInfoByColumn from './components/AdditionalInfoByColumn';
+import AdditionalInfoByColumn from '../AdditionalInfoByColumn';
 import FormTask from '../FormTask';
 
 import { useUpdateColumnTitle } from './useUpdateColumnTitle';
@@ -61,12 +61,8 @@ const Column = ({ columnId, columnIndex, column }) => {
             {...provided.dragHandleProps}
           >
             <div
-              // ref={containerRef}
               className={styles.mainContent}
               style={{ backgroundColor: columnColor }}
-              // ref={provided.innerRef}
-              // {...provided.draggableProps}
-              // {...provided.dragHandleProps}
             >
               <div className={styles.columnHeader}>
                 {!isShowTextarea && (
@@ -89,15 +85,6 @@ const Column = ({ columnId, columnIndex, column }) => {
                   />
                 )}
 
-                {/* <textarea
-                  ref={inputRef}
-                  className={styles.textareaTitle}
-                  value={title}
-                  onChange={e => setTitle(e.target.value)}
-                  onKeyUp={textAreaAdjust}
-                  onFocus={textAreaAdjust}
-                /> */}
-
                 <AdditionalInfoByColumn
                   columnId={columnId}
                   columnColor={columnColor}
@@ -105,7 +92,6 @@ const Column = ({ columnId, columnIndex, column }) => {
               </div>
 
               <TasksList listId={columnId} tasks={tasks} />
-
               <FormTask columnId={columnId} />
             </div>
           </li>
@@ -116,4 +102,3 @@ const Column = ({ columnId, columnIndex, column }) => {
 };
 
 export default Column;
-// export default memo(Column);

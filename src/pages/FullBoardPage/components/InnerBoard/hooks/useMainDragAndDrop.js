@@ -5,21 +5,11 @@ import { useUpdatePositionTasks } from './useUpdatePositionTasks';
 
 import { reorder, reorderTasks } from 'pages/FullBoardPage/helpers/helpers';
 
-export const useMainDragAndDrop = (dataColumns, columnsList) => {
+export const useMainDragAndDrop = dataColumns => {
   const [columns, setColumns] = useState(dataColumns);
   const [orderedColumns, setOrderedColumns] = useState(() =>
     Object.keys(dataColumns),
   );
-  // const [columns, setColumns] = useState(() =>
-  //   columnsList.reduce((acc, column) => {
-  //     acc[column.id] = column;
-  //     return acc;
-  //   }, {}),
-  // );
-
-  // const [orderedColumns, setOrderedColumns] = useState(() =>
-  //   columnsList.map(({ id }) => id),
-  // );
 
   const isFirstRenderRef = useRef(true);
   useEffect(() => {
@@ -78,8 +68,6 @@ export const useMainDragAndDrop = (dataColumns, columnsList) => {
       destination,
     });
 
-    // console.log('currentColumns', currentColumns);
-
     let newPositionsTasks = [];
 
     // reordering tasks in one column
@@ -93,7 +81,6 @@ export const useMainDragAndDrop = (dataColumns, columnsList) => {
       );
 
       setColumns(currentColumns);
-      // updatePositionTasks(newPositionsTasks, [source.droppableId]);
       updatePositionTasks(newPositionsTasks, { [source.droppableId]: [] });
       return;
     }
@@ -117,10 +104,6 @@ export const useMainDragAndDrop = (dataColumns, columnsList) => {
     ];
 
     setColumns(currentColumns);
-    // updatePositionTasks(newPositionsTasks, [
-    //   source.droppableId,
-    //   destination.droppableId,
-    // ]);
     updatePositionTasks(newPositionsTasks, {
       [source.droppableId]: [],
       [destination.droppableId]: [],

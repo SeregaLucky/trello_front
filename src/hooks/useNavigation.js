@@ -10,15 +10,21 @@ import { Urls } from 'helpers/urls';
 export const useNavigation = () => {
   const navigate = useNavigate();
 
+  const goToHome = () => navigate(Urls.getHomeURL());
+
   const goToLogin = () => navigate(Urls.getLoginURL());
 
   const goToRegistration = () => navigate(Urls.getRegistrationURL());
 
   const goToBoards = () => navigate(Urls.getBoardsURL());
 
+  const goToFullBoard = boardId => navigate(Urls.getFullBoardURL(boardId));
+
   return {
+    goToHome,
     goToLogin,
     goToRegistration,
     goToBoards,
+    goToFullBoard,
   };
 };

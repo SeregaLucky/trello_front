@@ -3,7 +3,7 @@ import { useMutation } from '@apollo/client';
 import { ADD_BOARD, ALL_BOARDS } from 'apollo/boards';
 
 export const useAddBoard = () => {
-  const [addBoardApollo, { error, loading }] = useMutation(ADD_BOARD, {
+  const [addBoardApollo, { loading }] = useMutation(ADD_BOARD, {
     update(cache, { data: { newBoard } }) {
       const { boards } = cache.readQuery({ query: ALL_BOARDS });
 
@@ -17,5 +17,8 @@ export const useAddBoard = () => {
     },
   });
 
-  return title => addBoardApollo({ variables: { title } });
+  return {
+    addBoard: title => addBoardApollo({ variables: { title } }),
+    loading,
+  };
 };

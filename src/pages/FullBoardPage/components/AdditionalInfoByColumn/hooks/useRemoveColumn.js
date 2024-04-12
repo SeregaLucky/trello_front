@@ -7,7 +7,7 @@ import { REMOVE_COLUMN } from 'apollo/columns';
 export const useRemoveColumn = () => {
   const { boardId } = useParams();
 
-  const [removeColumn, { error }] = useMutation(REMOVE_COLUMN, {
+  const [removeColumn, { error, loading }] = useMutation(REMOVE_COLUMN, {
     update(cache, { data: { removedColumn } }) {
       const { board } = cache.readQuery({
         query: GET_FULL_BOARD,
@@ -30,5 +30,8 @@ export const useRemoveColumn = () => {
     },
   });
 
-  return columnId => removeColumn({ variables: { id: columnId } });
+  return {
+    removeColumn: columnId => removeColumn({ variables: { id: columnId } }),
+    loading,
+  };
 };

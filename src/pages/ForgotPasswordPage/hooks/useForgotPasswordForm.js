@@ -20,7 +20,7 @@ export const useForgotPasswordForm = () => {
     handleSubmit,
   } = useForm({
     resolver: yupResolver(schema),
-    delayError: 1000,
+
     mode: 'onSubmit',
   });
 
@@ -31,7 +31,7 @@ export const useForgotPasswordForm = () => {
 
   return {
     register,
-    isLoading: false,
+    loading: false,
     errors,
     onSubmit: handleSubmit(onSubmit),
   };

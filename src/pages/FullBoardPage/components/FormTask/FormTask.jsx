@@ -1,12 +1,11 @@
-import { memo, useState } from 'react';
+import { useState } from 'react';
 
 import { useAddTask } from './useAddTask';
 
 const FormTask = ({ columnId }) => {
-  // console.log('RENDER CustomTaskForm', keyColumn);
   const [value, setValue] = useState('');
 
-  const addTask = useAddTask();
+  const { addTask, loading } = useAddTask();
 
   const onSubmit = e => {
     e.preventDefault();
@@ -27,7 +26,7 @@ const FormTask = ({ columnId }) => {
         placeholder="Title for this task..."
       />
 
-      <button type="button" onClick={() => {}}>
+      <button type="button" onClick={() => setValue('')} disabled={loading}>
         X
       </button>
     </form>
@@ -35,4 +34,3 @@ const FormTask = ({ columnId }) => {
 };
 
 export default FormTask;
-// export default memo(FormTask);

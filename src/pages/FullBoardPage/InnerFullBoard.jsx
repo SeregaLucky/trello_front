@@ -6,17 +6,11 @@ const InnerFullBoard = ({ board }) => {
     return acc;
   }, {});
 
-  // console.log('dataColumns', dataColumns);
-
   return (
     <div>
       <h3>InnerFullBoard</h3>
 
-      <InnerBoard
-        // dataColumns={data.columns}
-        dataColumns={dataColumns}
-        columnsList={board.columns}
-      />
+      <InnerBoard dataColumns={dataColumns} />
     </div>
   );
 };

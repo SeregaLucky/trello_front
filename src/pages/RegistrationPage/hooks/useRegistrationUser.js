@@ -2,27 +2,22 @@ import { useMutation } from '@apollo/client';
 
 import { REGISTRATION_USER } from 'apollo/auth';
 
-import { noticeError } from 'helpers/showNotices';
-
-import { useNavigation } from 'hooks/useNavigation';
-
 /* IN PROGRESS */
 export const useRegistrationUser = () => {
-  const { goToBoards } = useNavigation();
-
-  const [registrationUser, { error, loading }] = useMutation(
+  const [registrationUser, { loading }] = useMutation(
     REGISTRATION_USER,
 
-    {
-      update(cache, { data: { user } }) {},
-    },
+    // {
+    //   update(cache, { data: { user } }) {
+    //     console.log('user', user);
+    //   },
+    // },
   );
 
-  error ? noticeError('Error') : goToBoards();
-
   return {
-    // getUser: (login, password) => getUser(login, password),
-    registrationUser: (login, password) => console.log(login, password),
+    registrationUser: async ({ email, password, confirmPassword }) =>
+      registrationUser({ variables: { email, password, confirmPassword } }),
+
     loading,
   };
 };

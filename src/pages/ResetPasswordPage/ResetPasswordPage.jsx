@@ -8,7 +8,7 @@ import { YupPlaceholders } from 'helpers/helpersYup';
 import styles from './ResetPasswordPage.module.scss';
 
 const ResetPasswordPage = () => {
-  const { register, isLoading, errors, onSubmit } = useResetPasswordForm();
+  const { register, loading, errors, onSubmit } = useResetPasswordForm();
 
   return (
     <div>
@@ -30,7 +30,7 @@ const ResetPasswordPage = () => {
           />
         </div>
 
-        <ButtonAuth isDisabled={isLoading}>Reset Password</ButtonAuth>
+        <ButtonAuth isDisabled={loading}>Reset Password</ButtonAuth>
       </form>
     </div>
   );
