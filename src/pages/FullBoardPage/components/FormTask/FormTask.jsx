@@ -5,7 +5,7 @@ import { useAddTask } from './useAddTask';
 const FormTask = ({ columnId }) => {
   const [value, setValue] = useState('');
 
-  const addTask = useAddTask();
+  const { addTask, loading } = useAddTask();
 
   const onSubmit = e => {
     e.preventDefault();
@@ -26,7 +26,7 @@ const FormTask = ({ columnId }) => {
         placeholder="Title for this task..."
       />
 
-      <button type="button" onClick={() => setValue('')}>
+      <button type="button" onClick={() => setValue('')} disabled={loading}>
         X
       </button>
     </form>

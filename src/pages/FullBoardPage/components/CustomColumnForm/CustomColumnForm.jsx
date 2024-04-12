@@ -35,4 +35,3 @@ const CustomColumnForm = () => {
 };
 
 export default CustomColumnForm;
-// export default memo(CustomColumnForm);

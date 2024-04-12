@@ -38,7 +38,7 @@ const InfoAboutColumn = ({
   const containerRef = useRef(null);
 
   const updateColumnColor = useUpdateColumnColor();
-  const removeColumnById = useRemoveColumn();
+  const { removeColumn, loading } = useRemoveColumn();
 
   const getCoords = elem => {
     let box = elem.getBoundingClientRect();
@@ -110,7 +110,8 @@ const InfoAboutColumn = ({
             <button
               className={styles.buttonAction}
               type="button"
-              onClick={() => removeColumnById(columnId)}
+              onClick={() => removeColumn(columnId)}
+              disabled={loading}
             >
               Archive this list
             </button>
