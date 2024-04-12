@@ -7,7 +7,7 @@ const CustomColumnForm = () => {
   const { addColumn, loading } = useAddColumn();
   const [value, setValue] = useState('');
 
-  const onSubmit = e => {
+  const onSubmit = async e => {
     e.preventDefault();
     if (loading) return;
 
@@ -15,7 +15,7 @@ const CustomColumnForm = () => {
     if (valueTrim.length === 0) return;
 
     try {
-      addColumn(valueTrim);
+      await addColumn(valueTrim);
       setValue('');
     } catch (error) {
       noticeError(error.message);

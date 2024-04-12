@@ -7,6 +7,8 @@ import FormTask from '../FormTask';
 
 import { useUpdateColumnTitle } from './useUpdateColumnTitle';
 
+import { noticeError } from 'helpers/showNotices';
+
 import styles from './Column.module.scss';
 
 // { id: nanoid(6), columnColors: '#BAF3DB' },
@@ -31,13 +33,17 @@ const Column = ({ columnId, columnIndex, column }) => {
     if (!input) return;
     input.focus();
 
-    const onBlurTitleInput = ({ target: { value } }) => {
+    const onBlurTitleInput = async ({ target: { value } }) => {
       setIsShowTextarea(false);
 
       const valueTrim = value.trim();
       if (columnTitle === valueTrim) return;
 
-      updateColumnTitle(columnId, valueTrim);
+      try {
+        await updateColumnTitle(columnId, valueTrim);
+      } catch (error) {
+        noticeError(error.message);
+      }
     };
 
     input.addEventListener('blur', onBlurTitleInput);

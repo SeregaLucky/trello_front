@@ -9,6 +9,7 @@ import { useUpdateColumnColor } from './hooks/useUpdateColumnColor';
 import { useRemoveColumn } from './hooks/useRemoveColumn';
 
 import styles from './AdditionalInfoByColumn.module.scss';
+import { noticeError } from 'helpers/showNotices';
 
 const columnColors = [
   { id: getSId(), columnColor: '#f1f2f4' },
@@ -39,6 +40,14 @@ const InfoAboutColumn = ({
 
   const updateColumnColor = useUpdateColumnColor();
   const { removeColumn, loading } = useRemoveColumn();
+
+  const removeColumnById = async () => {
+    try {
+      await removeColumn(columnId);
+    } catch (error) {
+      noticeError(error.message);
+    }
+  };
 
   const getCoords = elem => {
     let box = elem.getBoundingClientRect();
@@ -110,7 +119,7 @@ const InfoAboutColumn = ({
             <button
               className={styles.buttonAction}
               type="button"
-              onClick={() => removeColumn(columnId)}
+              onClick={removeColumnById}
               disabled={loading}
             >
               Archive this list

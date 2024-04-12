@@ -7,7 +7,7 @@ const FormTask = ({ columnId }) => {
   const [value, setValue] = useState('');
   const { addTask, loading } = useAddTask();
 
-  const onSubmit = e => {
+  const onSubmit = async e => {
     e.preventDefault();
     if (loading) return;
 
@@ -15,7 +15,7 @@ const FormTask = ({ columnId }) => {
     if (valueTrim.length === 0) return;
 
     try {
-      addTask(columnId, valueTrim);
+      await addTask(columnId, valueTrim);
       setValue('');
     } catch (error) {
       noticeError(error.message);

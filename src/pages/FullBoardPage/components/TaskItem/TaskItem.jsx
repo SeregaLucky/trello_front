@@ -26,7 +26,7 @@ const TaskItem = ({ task, provided }) => {
     e.stopPropagation();
 
     try {
-      removeTaskById(id);
+      await removeTaskById(id);
     } catch (error) {
       noticeError(error.message);
     }
