@@ -1,22 +1,25 @@
 import { useState } from 'react';
 
 import { useAddColumn } from './useAddColumn';
+import { noticeError } from 'helpers/showNotices';
 
 const CustomColumnForm = () => {
   const { addColumn, loading } = useAddColumn();
-
   const [value, setValue] = useState('');
 
   const onSubmit = e => {
-    if (loading) return;
-
     e.preventDefault();
+    if (loading) return;
 
     const valueTrim = value.trim();
     if (valueTrim.length === 0) return;
 
-    addColumn(valueTrim);
-    setValue('');
+    try {
+      addColumn(valueTrim);
+      setValue('');
+    } catch (error) {
+      noticeError(error.message);
+    }
   };
 
   return (
@@ -28,9 +31,9 @@ const CustomColumnForm = () => {
         placeholder="Column title..."
       />
 
-      {/* <button type="button" onClick={() => setIsShowColumnForm(false)}>
+      <button type="button" onClick={() => setValue('')}>
         X
-      </button> */}
+      </button>
     </form>
   );
 };

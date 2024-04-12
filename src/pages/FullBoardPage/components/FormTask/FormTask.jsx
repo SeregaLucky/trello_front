@@ -1,22 +1,25 @@
 import { useState } from 'react';
 
 import { useAddTask } from './useAddTask';
+import { noticeError } from 'helpers/showNotices';
 
 const FormTask = ({ columnId }) => {
   const [value, setValue] = useState('');
-
   const { addTask, loading } = useAddTask();
 
   const onSubmit = e => {
-    if (loading) return;
-
     e.preventDefault();
+    if (loading) return;
 
     const valueTrim = value.trim();
     if (valueTrim.length === 0) return;
 
-    addTask(columnId, valueTrim);
-    setValue('');
+    try {
+      addTask(columnId, valueTrim);
+      setValue('');
+    } catch (error) {
+      noticeError(error.message);
+    }
   };
 
   return (
