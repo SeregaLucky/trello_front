@@ -8,10 +8,14 @@ import { ALL_BOARDS } from 'apollo/boards';
 import { noticeError } from 'helpers/showNotices';
 
 import { useNavigation } from 'hooks/useNavigation';
+import { CURRENT_USER } from 'apollo/user';
 
 const BoardsPage = () => {
   const { data, loading, error } = useQuery(ALL_BOARDS);
+  // const { data, loading, error } = useQuery(CURRENT_USER);
   const { goToLogin } = useNavigation();
+
+  console.log('data', data);
 
   useEffect(() => {
     if (error?.message === 'You are not authorized to perform this action') {
@@ -44,7 +48,12 @@ const BoardsPage = () => {
     );
   }
 
-  return <InnerBoards boards={data.boards} />;
+  return (
+    <InnerBoards
+      boards={data.boards}
+      // boards={data.currentUser.boards}
+    />
+  );
 };
 
 export default BoardsPage;

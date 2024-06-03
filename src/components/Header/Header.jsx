@@ -1,6 +1,8 @@
 import { Link, NavLink } from 'react-router-dom';
 import cn from 'classnames';
 
+import InfoUser from './components/InfoUser';
+
 import { Urls } from 'helpers/urls';
 
 import styles from './Header.module.scss';
@@ -55,6 +57,8 @@ const Header = () => {
           ))}
         </ul>
       </nav>
+
+      <InfoUser />
     </header>
   );
 };
