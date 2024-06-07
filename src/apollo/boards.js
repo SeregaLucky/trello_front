@@ -52,6 +52,24 @@ export const ADD_BOARD = gql`
   }
 `;
 
+export const ADD_USER_IN_BOARD = gql`
+  mutation AddUserInBoard($boardId: ID!, $email: String!) {
+    newBoard: addUserInBoard(boardId: $boardId, email: $email) {
+      boardId
+      email
+    }
+  }
+`;
+
+export const REMOVE_USER_FROM_BOARD = gql`
+  mutation RemoveUserFromBoard($boardId: ID!, $email: String!) {
+    newBoard: removeUserFromBoard(boardId: $boardId, email: $email) {
+      boardId
+      email
+    }
+  }
+`;
+
 // title
 // isFavorite
 // createdDate

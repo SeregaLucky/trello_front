@@ -6,6 +6,7 @@ import CustomColumnForm from '../CustomColumnForm';
 import { useMainDragAndDrop } from './hooks/useMainDragAndDrop';
 
 import styles from './Table.module.scss';
+import AddEmailUser from '../AddEmailUser';
 
 const InnerBoard = ({ dataColumns }) => {
   const { columns, orderedColumns, onDragEnd } =
@@ -14,6 +15,8 @@ const InnerBoard = ({ dataColumns }) => {
   return (
     <div>
       <h2>Board4</h2>
+
+      <AddEmailUser />
 
       <CustomColumnForm />
 
