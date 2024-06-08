@@ -1,10 +1,25 @@
 import { useState } from 'react';
 
-const AddEmailUser = () => {
-  const [email, setEmail] = useState('');
+import { useAddUserInBoard } from './useAddUserInBoard';
 
-  const onSubmit = e => {
+import { noticeError } from 'helpers/showNotices';
+
+const AddEmailUser = ({ boardId }) => {
+  const [email, setEmail] = useState('');
+  const { addUserInBoard, loading } = useAddUserInBoard();
+
+  const onSubmit = async e => {
     e.preventDefault();
+
+    const emailTrim = email.trim();
+    if (emailTrim.length === 0) return;
+
+    try {
+      await addUserInBoard(boardId, emailTrim);
+      setEmail('');
+    } catch (error) {
+      noticeError(error.message);
+    }
   };
 
   return (
@@ -15,7 +30,9 @@ const AddEmailUser = () => {
         onChange={e => setEmail(e.target.value)}
       />
 
-      <button type="submit">Add</button>
+      <button type="submit" disabled={loading}>
+        Add
+      </button>
     </form>
   );
 };

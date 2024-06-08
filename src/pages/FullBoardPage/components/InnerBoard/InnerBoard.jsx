@@ -1,14 +1,14 @@
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 import Column from '../Column';
+import AddEmailUser from '../AddEmailUser';
 import CustomColumnForm from '../CustomColumnForm';
 
 import { useMainDragAndDrop } from './hooks/useMainDragAndDrop';
 
 import styles from './Table.module.scss';
-import AddEmailUser from '../AddEmailUser';
 
-const InnerBoard = ({ dataColumns }) => {
+const InnerBoard = ({ dataColumns, boardId }) => {
   const { columns, orderedColumns, onDragEnd } =
     useMainDragAndDrop(dataColumns);
 
@@ -16,7 +16,7 @@ const InnerBoard = ({ dataColumns }) => {
     <div>
       <h2>Board4</h2>
 
-      <AddEmailUser />
+      <AddEmailUser boardId={boardId} />
 
       <CustomColumnForm />
 
