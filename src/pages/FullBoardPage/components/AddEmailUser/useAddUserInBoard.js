@@ -9,7 +9,7 @@ export const useAddUserInBoard = () => {
 
       console.log('data', data);
 
-      const { boardId, email } = data;
+      const { boardId, newUser } = data;
 
       cache.writeQuery({
         query: ALL_BOARDS,
@@ -22,6 +22,7 @@ export const useAddUserInBoard = () => {
             board.id === boardId
               ? {
                   ...board,
+                  temporaryEmails: [...board.temporaryEmails, newUser],
                 }
               : board,
           ),
