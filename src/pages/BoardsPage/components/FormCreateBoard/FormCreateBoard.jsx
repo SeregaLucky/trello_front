@@ -5,11 +5,16 @@ import { useAddBoard } from './useAddBoard';
 import { useNavigation } from 'hooks/useNavigation';
 
 import { noticeError } from 'helpers/showNotices';
+import { useGetCurrentUser } from 'hooks/useGetCurrentUser';
 
 const FormCreateBoard = () => {
   const { goToFullBoard } = useNavigation();
   const [titleBoard, setTitleBoard] = useState('');
   const { addBoard, loading } = useAddBoard();
+
+  // Потом как то по нормалнее переделать
+  // Нету проверки сейчас на ошибку и забержку
+  const { data: dataUser } = useGetCurrentUser();
 
   const onSubmitBoard = async e => {
     e.preventDefault();
@@ -18,7 +23,10 @@ const FormCreateBoard = () => {
     if (titleBoardTrim.length === 0) return;
 
     try {
-      const { data } = await addBoard(titleBoardTrim);
+      const { data } = await addBoard(
+        titleBoardTrim,
+        dataUser.currentUser.email,
+      );
 
       setTitleBoard('');
       goToFullBoard(data.newBoard.id);

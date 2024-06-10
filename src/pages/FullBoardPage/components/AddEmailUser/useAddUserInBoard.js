@@ -9,25 +9,25 @@ export const useAddUserInBoard = () => {
 
       console.log('data', data);
 
-      const { boardId, newUser } = data;
+      // const { boardId, newUser } = data;
 
-      cache.writeQuery({
-        query: ALL_BOARDS,
+      // cache.writeQuery({
+      //   query: ALL_BOARDS,
 
-        data: {
-          // boards: [...boards, newBoard],
-          // temporaryEmails: [],
-          // confirmedEmails: [],
-          boards: boards.map(board =>
-            board.id === boardId
-              ? {
-                  ...board,
-                  temporaryEmails: [...board.temporaryEmails, newUser],
-                }
-              : board,
-          ),
-        },
-      });
+      //   data: {
+      //     // boards: [...boards, newBoard],
+      //     // temporaryEmails: [],
+      //     // confirmedEmails: [],
+      //     boards: boards.map(board =>
+      //       board.id === boardId
+      //         ? {
+      //             ...board,
+      //             temporaryEmails: [...board.temporaryEmails, newUser],
+      //           }
+      //         : board,
+      //     ),
+      //   },
+      // });
     },
   });
 

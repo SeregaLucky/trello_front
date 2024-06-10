@@ -18,7 +18,7 @@ export const useAddBoard = () => {
   });
 
   return {
-    addBoard: title => addBoardApollo({ variables: { title } }),
+    addBoard: (title, email) => addBoardApollo({ variables: { title, email } }),
     loading,
   };
 };
